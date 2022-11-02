@@ -17,7 +17,8 @@ public class Road {Car car1 = new Car("red", 4, "110");
         return "Road{" + "car1=" + car1.toString() + ", car2=" + car2.toString() + ", car3=" + car3.toString() + '}';
     }
     public static void main(String[] args) {
-        
+        Road road1 = new Road();
+        System.out.println(road1.toString());
     }
     
 

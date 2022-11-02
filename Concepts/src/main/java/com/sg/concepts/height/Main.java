@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.sg.concepts.car;
+package com.sg.concepts.height;
 
 /**
  *
@@ -10,9 +10,11 @@ package com.sg.concepts.car;
  */
 public class Main {
     public static void main(String[] args) {
-        Road road1 = new Road();
-        System.out.println(road1.toString());
+        Height height1 = new Height(12, 3);
+        Height height2 = new Height(13, 4);
         
+        String result = Height.sumHeight(height1, height2);
+        System.out.println("Total height is :"+result);
     }
     
     
