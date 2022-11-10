@@ -7,6 +7,11 @@ import java.util.Scanner;
 
 public class BookPresentationImpl implements BookPresentation{
     private BookService bookService;
+
+    public void setBookService(BookService bookService) {
+        this.bookService = bookService;
+    }
+
     @Override
     public void showMenu() {
         System.out.println("===========================");
