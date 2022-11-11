@@ -8,4 +8,6 @@ public interface BookDao {
 
     Collection<Book> listAllBook();
     Book serachBook(int id);
+
+    Book createBook(Book book);
 }

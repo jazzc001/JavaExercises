@@ -45,7 +45,22 @@ public class BookPresentationImpl implements BookPresentation{
                 }
                 break;
             case 3:
-                System.out.println("under development");
+                Book book = new Book();
+                System.out.println("Create a new book record");
+                System.out.println("Enter bookId");
+                book.setBookId(scanner.nextInt());
+                System.out.println("Enter bookName");
+                book.setBookName(scanner.next());
+                System.out.println("Enter author name");
+                book.setAuthorName(scanner.next());
+                System.out.println("Enter no of copy");
+                book.setNoOfCopies(scanner.nextInt());
+
+                if(bookService.addBook(book)){
+                    System.out.println("Book recorded added");
+                } else {
+                    System.out.println("Book with id"  + book.getBookId()+ "already exist, cannot add it as a new book");
+                }
                 break;
             case 4:
                 System.out.println("Thanks for using Book Management System");

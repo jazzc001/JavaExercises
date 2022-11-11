@@ -20,4 +20,9 @@ public class BookDaoImpl implements BookDao{
 
         return BookDatabase.getBookList().get(id);
     }
+
+    @Override
+    public Book createBook(Book book) {
+        return BookDatabase.getBookList().put(book.getBookId(), book);
+    }
 }

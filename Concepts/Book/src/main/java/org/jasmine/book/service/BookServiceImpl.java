@@ -24,4 +24,14 @@ public class BookServiceImpl implements BookService{
     public Book searchBookById(int id) {
         return bookDao.serachBook(id);
     }
+
+    @Override
+    public boolean addBook(Book book) {
+        Book b = bookDao.serachBook(book.getBookId());
+        if(b != null) {
+            return false;
+        }
+        bookDao.createBook(book);
+        return true;
+    }
 }

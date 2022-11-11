@@ -9,4 +9,6 @@ public interface BookService {
     Collection<Book> getAllBooks();
 
     Book searchBookById(int id);
+
+    boolean addBook(Book book);
 }
