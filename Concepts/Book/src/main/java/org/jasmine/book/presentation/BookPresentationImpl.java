@@ -3,6 +3,7 @@ package org.jasmine.book.presentation;
 import org.jasmine.book.entity.Book;
 import org.jasmine.book.service.BookService;
 
+import java.util.Collection;
 import java.util.Scanner;
 
 public class BookPresentationImpl implements BookPresentation{
@@ -28,7 +29,10 @@ public class BookPresentationImpl implements BookPresentation{
         Scanner scanner = new Scanner(System.in);
         switch(choice) {
             case 1:
-                System.out.println("under development");
+                Collection<Book> books = bookService.getAllBooks();
+                for(Book element: books) {
+                    System.out.println(element);
+                }
                 break;
             case 2:
                 System.out.println("Enter book ID");

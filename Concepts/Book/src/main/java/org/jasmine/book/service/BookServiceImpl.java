@@ -4,6 +4,8 @@ import org.jasmine.book.entity.Book;
 import org.jasmine.book.persistence.BookDao;
 import org.jasmine.book.persistence.BookDaoImpl;
 
+import java.util.Collection;
+
 public class BookServiceImpl implements BookService{
 
     private BookDao bookDao;
@@ -11,6 +13,11 @@ public class BookServiceImpl implements BookService{
     public BookServiceImpl(BookDao bookDao) {
         super();
         this.bookDao = bookDao;
+    }
+
+    @Override
+    public Collection<Book> getAllBooks() {
+        return bookDao.listAllBook();
     }
 
     @Override

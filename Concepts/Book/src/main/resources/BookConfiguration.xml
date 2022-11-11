@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Setter Injection -->
+    <bean id="dao" class="org.jasmine.book.persistence.BookDaoImpl">
+
+    </bean>
+
+
+<!--Constructor injection -->
+    <bean id="service" class="org.jasmine.book.service.BookServiceImpl">
+        <constructor-arg name="bookDao" ref="dao"></constructor-arg>
+    </bean>
+
+    <!-- Setter Injection -->
+    <bean id="presentation" class="org.jasmine.book.presentation.BookPresentationImpl">
+       <property name="bookService" ref="service"></property>
+    </bean>
+
+
+
+</beans>
