@@ -8,7 +8,10 @@ import com.sg.booktracker.ui.BookView;
 import com.sg.booktracker.ui.UserIO;
 import com.sg.booktracker.ui.UserIOConsoleImpl;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.lang.annotation.Annotation;
 
 /**
  *
@@ -16,7 +19,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class App {
     public static void main(String[] args) {
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("classpath:configuration.xml");
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.scan("com.sg.booktracker");
+        appContext.refresh();
         
         BookController controller = appContext.getBean("controller", BookController.class);
         controller.run();
