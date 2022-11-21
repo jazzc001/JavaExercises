@@ -1,6 +1,6 @@
 package org.jasmine.book.persistence;
 
-import org.jasmine.book.Password;
+import org.jasmine.book.gitignore.Password;
 import org.jasmine.book.entity.Book;
 
 import java.sql.*;
