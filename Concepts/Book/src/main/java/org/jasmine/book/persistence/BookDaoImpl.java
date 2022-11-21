@@ -1,5 +1,6 @@
 package org.jasmine.book.persistence;
 
+import org.jasmine.book.Password;
 import org.jasmine.book.entity.Book;
 
 import java.sql.*;
@@ -20,7 +21,7 @@ public class BookDaoImpl implements BookDao{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Books", "root", "****");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Books", "root", Password.password);
 
             preparedStatement = connection.prepareStatement("SELECT * FROM BOOKS");
 
@@ -60,7 +61,7 @@ public class BookDaoImpl implements BookDao{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Books", "root", "****");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Books", "root", Password.password);
 
             preparedStatement = connection.prepareStatement("SELECT * FROM BOOKS WHERE BOOKID=?");
 
@@ -102,7 +103,7 @@ public class BookDaoImpl implements BookDao{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Books", "root", "****");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Books", "root", Password.password);
 
             preparedStatement = connection.prepareStatement("INSERT INTO BOOKS VALUES(?,?,?,?,?)");
 
@@ -139,7 +140,7 @@ public class BookDaoImpl implements BookDao{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Books", "root", "****");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Books", "root", Password.password);
 
             preparedStatement = connection.prepareStatement("DELETE FROM BOOKS WHERE BOOKID=?");
 

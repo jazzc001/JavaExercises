@@ -18,5 +18,7 @@ public class Main {
         }).forEach(e -> System.out.println(e));
 
         System.out.println("Number of negative number: "+ negnums);
+
+        
     }
 }
