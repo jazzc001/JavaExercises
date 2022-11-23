@@ -2,6 +2,7 @@ import org.jasmine.book.entity.Book;
 import org.jasmine.book.persistence.BookDaoImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -25,9 +26,12 @@ public class BookDaoTest {
         bookDaoImpl = null;
     }
 
-    @Test
-    void testListAllRecords() {
+    @Nested
+    class testListAllRecords{
+        @Test
+        void lengthWillBeGreaterToZero () {
         assertTrue(bookDaoImpl.listAllBook().size() > 0);
+    }
     }
 
     @Test
