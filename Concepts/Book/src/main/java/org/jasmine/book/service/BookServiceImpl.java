@@ -3,12 +3,17 @@ package org.jasmine.book.service;
 import org.jasmine.book.entity.Book;
 import org.jasmine.book.persistence.BookDao;
 import org.jasmine.book.persistence.BookDaoImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@Service("service")
 public class BookServiceImpl implements BookService{
 
+    @Autowired
     private BookDao bookDao;
+
 
     public BookServiceImpl(BookDao bookDao) {
         super();

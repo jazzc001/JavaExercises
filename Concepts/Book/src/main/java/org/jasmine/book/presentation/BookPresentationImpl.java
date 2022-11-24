@@ -2,6 +2,9 @@ package org.jasmine.book.presentation;
 
 import org.jasmine.book.entity.Book;
 import org.jasmine.book.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,8 +12,12 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.util.Collection;
 import java.util.Scanner;
 
+@Component("presentation")
 public class BookPresentationImpl implements BookPresentation{
+    @Autowired
     private BookService bookService;
+
+
 
     public void setBookService(BookService bookService) {
         this.bookService = bookService;

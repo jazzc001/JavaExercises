@@ -31,7 +31,7 @@ public enum Dish {
     CURRY(1900, true, 15){
         @Override
         public void buyFood() {
-            
+
         }
     };
 
