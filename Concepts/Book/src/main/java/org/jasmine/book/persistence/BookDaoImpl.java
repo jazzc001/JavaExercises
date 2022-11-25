@@ -5,6 +5,8 @@ import org.jasmine.book.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Repository("dao")
 public class BookDaoImpl implements BookDao{
@@ -62,8 +66,10 @@ public class BookDaoImpl implements BookDao{
 
 
 //        return bookList;
+        String query = "SELECT * FROM BOOKS";
+        Collection<Book> bookList = Collections.singleton(jdbcTemplate.queryForObject(query, new BookRowMapper()));
 
-        return null;
+        return bookList;
     }
 
     @Override
@@ -104,8 +110,17 @@ public class BookDaoImpl implements BookDao{
 //            }
 //        }
 //        return book;
+        Book book = null;
+        try {
 
-        return null;
+            String query = "SELECT * FROM BOOKS WHERE BOOKID=?";
+            book = jdbcTemplate.queryForObject(query, new BookRowMapper(), id);
+        } catch(EmptyResultDataAccessException e) {
+            return null;
+
+        }
+
+        return book;
 
     }
 
@@ -144,8 +159,16 @@ public class BookDaoImpl implements BookDao{
 //
 //
 //        return rows;
+        try {
+            String query = "INSERT INTO BOOKS VALUES(?,?,?,?,?)";
+            int row = jdbcTemplate.update(query, book.getBookId(), book.getBookName(), book.getAuthorName(), book.getNoOfCopies(), book.getDateOfPublishing());
 
-        return 0;
+            return row;
+        } catch (DuplicateKeyException e) {
+            return 0;
+        }
+
+
     }
 
     @Override
