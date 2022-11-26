@@ -65,7 +65,7 @@ public class BookPresentationImpl implements BookPresentation{
                 book.setAuthorName(scanner.next());
                 System.out.println("Enter no of copy");
                 book.setNoOfCopies(scanner.nextInt());
-                System.out.println("Enter date of publising (dd-Mon-yyy)");
+                System.out.println("Enter date of publising (dd-Mon-yyyy)");
                 DateTimeFormatter df = new DateTimeFormatterBuilder().parseCaseInsensitive().append(DateTimeFormatter.ofPattern("d-MMM-yyyy")).toFormatter();
                 book.setDateOfPublishing(LocalDate.parse(scanner.next(), df));
 

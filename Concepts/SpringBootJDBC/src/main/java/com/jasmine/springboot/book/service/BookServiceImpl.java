@@ -31,7 +31,7 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public boolean addBook(Book book) {
-        if(searchBookById(book.getBookId()) != null) {
+        if(searchBookById(book.getBookId()) == null) {
             bookDao.save(book);
             return true;
         }
