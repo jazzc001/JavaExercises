@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -45,5 +46,20 @@ public class BookServiceImpl implements BookService{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Collection<Book> findCopiesGreaterThan(int copies) {
+
+
+
+        return bookDao.findByNoOfCopiesGreaterThan(copies);
+
+    }
+
+    @Override
+    public Integer findAuthorListNumber(String name) {
+
+        return bookDao.countDistinctByAuthorName(name);
     }
 }

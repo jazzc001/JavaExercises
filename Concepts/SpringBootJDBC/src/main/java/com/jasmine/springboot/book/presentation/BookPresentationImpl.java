@@ -30,7 +30,9 @@ public class BookPresentationImpl implements BookPresentation{
         System.out.println("2. Search Book By ID");
         System.out.println("3. Add New Book");
         System.out.println("4. Delete a book");
-        System.out.println("5. Exit");
+        System.out.println("5. Search Book that is greater than the copies is greater than certain value");
+        System.out.println("6. Search a list of books by author name");
+        System.out.println("7. Exit");
         System.out.println("============================");
     }
 
@@ -84,8 +86,21 @@ public class BookPresentationImpl implements BookPresentation{
                     System.out.println("Book with id " + bookId + " does not exist. ");
                 }
                 break;
-
             case 5:
+                System.out.println("Please enter no of Copies");
+                int copies = scanner.nextInt();
+                Collection<Book> newBookList = bookService.findCopiesGreaterThan(copies);
+                for(Book item: newBookList) {
+                    System.out.println(item);
+                }
+                break;
+            case 6:
+                System.out.println("Please enter no of Author name");
+                String name = scanner.next();
+                int countOfAuthor = bookService.findAuthorListNumber(name);
+                System.out.println(countOfAuthor);
+                break;
+            case 7:
                 System.out.println("Thanks for using Book Management System");
                 System.exit(0);
             default:
