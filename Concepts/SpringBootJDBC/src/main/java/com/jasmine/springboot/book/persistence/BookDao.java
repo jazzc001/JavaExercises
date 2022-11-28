@@ -2,8 +2,13 @@ package com.jasmine.springboot.book.persistence;
 
 import com.jasmine.springboot.book.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -11,4 +16,11 @@ import java.util.List;
 public interface BookDao extends JpaRepository<Book, Integer> {
     List<Book> findByNoOfCopiesGreaterThan(int copies);
     int countDistinctByAuthorName(String name);
+
+    //JPQL
+    @Query(value = "insert into books values(:bid, :na, :au, :co, :dop")
+    int insertBook(@Param("bid")int bookId,@Param("na") String bookName,@Param("au") String authorName,@Param("co") int noOfCopies,@Param("dop") LocalDate dateOfPublising);
+
+
+
 }
