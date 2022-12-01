@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -18,8 +19,9 @@ public interface BookDao extends JpaRepository<Book, Integer> {
     int countDistinctByAuthorName(String name);
 
     //JPQL
-    @Query(value = "insert into books values(:bid, :na, :au, :co, :dop")
-    int insertBook(@Param("bid")int bookId,@Param("na") String bookName,@Param("au") String authorName,@Param("co") int noOfCopies,@Param("dop") LocalDate dateOfPublising);
+    @Query(value = "insert into books values(:bid, :na, :au, :co, :dop", nativeQuery = true)
+    int insertBook(@Param("bid")int bookId,@Param("na") String bookName,@Param("au") String authorName,
+                   @Param("co") int noOfCopies,@Param("dop") LocalDate dateOfPublishing) throws SQLIntegrityConstraintViolationException;
 
 
 

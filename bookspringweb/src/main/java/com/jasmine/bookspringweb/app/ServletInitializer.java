@@ -1,5 +1,6 @@
-package com.jasmine.bookspringweb;
+package com.jasmine.bookspringweb.app;
 
+import com.jasmine.bookspringweb.app.BookspringwebApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.Scanner;
 
-@SpringBootApplication(scanBasePackages = "com.jasmine")
+@SpringBootApplication(scanBasePackages = "com.jasmine.springboot.book")
 @EntityScan(basePackages = "com.jasmine.springboot.book.entity")
 @EnableJpaRepositories(basePackages = "com.jasmine.springboot.book.persistence")
 public class SpringbootApplication {

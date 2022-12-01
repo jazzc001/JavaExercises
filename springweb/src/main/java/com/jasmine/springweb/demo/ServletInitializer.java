@@ -1,5 +1,6 @@
-package com.jasmine.springweb;
+package com.jasmine.springweb.demo;
 
+import com.jasmine.springweb.demo.MyFirstSpringWebApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
