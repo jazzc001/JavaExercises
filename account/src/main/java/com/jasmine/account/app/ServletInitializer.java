@@ -1,5 +1,6 @@
-package com.jasmine.account;
+package com.jasmine.account.app;
 
+import com.jasmine.account.app.AccountApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
