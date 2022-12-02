@@ -3,5 +3,7 @@ package com.jasmine.account.model.service;
 import com.jasmine.account.entity.Account;
 
 public interface LoginService {
-    public boolean loginCheck(Account account);
+    Account loginCheck(int accountId, String password);
+
+    Account searchById(int accountId);
 }
