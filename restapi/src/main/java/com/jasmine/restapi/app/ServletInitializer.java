@@ -1,4 +1,4 @@
-package com.jasmine.restapi;
+package com.jasmine.restapi.app;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

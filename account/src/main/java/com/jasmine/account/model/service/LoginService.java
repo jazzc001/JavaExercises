@@ -5,5 +5,5 @@ import com.jasmine.account.entity.Account;
 public interface LoginService {
     Account loginCheck(int accountId, String password);
 
-    Account searchById(int accountId);
+
 }

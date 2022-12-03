@@ -6,16 +6,17 @@
 </head>
 <body>
 <h1>This is LoginPage</h1>
-<form action="./login">
+<form action="./login" method="post">
     Enter Account ID : <input type="text" name="accountId">
     Enter Password : <input type="password" name="password">
     <input type="submit" value="Login">
-
+    <h2 th:text="${message}" style="color: red"></h2>
 
 </form>
+
 <br><br>
 
-<h2 th:text="${message}" style="color: red"></h2>
+
 
 </body>
 </html>

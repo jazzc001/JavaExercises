@@ -13,7 +13,7 @@ public class LoginServiceImpl implements LoginService{
     public Account loginCheck(int accountId, String password) {
 
         try {
-            Account acc = accountDao.findByAccountIdAndPassword(accountId, password);
+            Account acc = accountDao.findUserByAccountIdAndPassword(accountId, password);
             return acc;
         }
         catch (Exception e) {
@@ -23,8 +23,6 @@ public class LoginServiceImpl implements LoginService{
 
     }
 
-    @Override
-    public Account searchById(int accountId) {
-        return accountDao.findById(accountId).orElse(null);
-    }
+
+
 }
