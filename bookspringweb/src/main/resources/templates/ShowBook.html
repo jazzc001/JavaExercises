@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Book Management System</h1>
+<h2 th:text="'Book : '+${book.bookId}"></h2>
+<table border="1">
+    <tr>
+        <th>Book ID</th>
+        <th>Book Name</th>
+        <th>Author Name</th>
+        <th>No of Copies</th>
+        <th>Date of Publishing</th>
+    </tr>
+
+    <tr>
+        <td th:text="${book.bookId}"></td>
+        <td th:text="${book.bookName}"></td>
+        <td th:text="${book.authorName}"></td>
+        <td th:text="${book.noOfCopies}"></td>
+        <td th:text="${book.dateOfPublishing}"></td>
+
+    </tr>
+</table>
+<br><br>
+<a href="./index">Back to Menu Page</a>
+</body>
+</html>
