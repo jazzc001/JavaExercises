@@ -14,15 +14,15 @@ public class AccountServiceImpl implements AccountService{
     private AccountDao accountDao;
 
     @Override
-    public boolean findById(int accountId, int receipentId, double amount) {
+    public Account transferFunds(int accountId, int receipentId, double amount) {
         Account sender = accountDao.findById(accountId).orElse(null);
-        Account receipient = accountDao.findById(receipentId).orElse(null);
-        if(receipient!=null && sender.getBalance()>=amount) {
-            accountDao.updateBalance(accountId, amount);
-            accountDao.updateBalance(receipentId, -amount);
-            return true;
+        Account recipient = accountDao.findById(receipentId).orElse(null);
+        if(recipient!=null && sender.getBalance()>=amount) {
+            accountDao.updateBalance(accountId, -amount);
+            accountDao.updateBalance(receipentId, amount);
+            return sender;
         }
 
-        return false;
+        return null;
     }
 }

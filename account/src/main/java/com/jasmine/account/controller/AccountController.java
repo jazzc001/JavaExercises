@@ -37,18 +37,35 @@ public class AccountController {
         Account account = loginService.loginCheck(accountId, password);
         if(account != null) {
             session.setAttribute("account", account);
-            mv.setViewName("Transaction");
+            mv.setViewName("MenuPage");
         } else {
             mv.addObject("message", "InvalidUser Credentials, Please try again");
-            mv.setViewName("loginPage");
+            mv.setViewName("LoginPage");
 
         }
         return mv;
+
+    }
+    //===============TransactionPage===========================
+    @RequestMapping("/transactionPage")
+    public ModelAndView transactionPage(){
+        return new ModelAndView("Transaction");
     }
     @RequestMapping("/transaction")
-    public ModelAndView transactionController(HttpServletRequest request, HttpSession session) {
+    public ModelAndView transactionController(@RequestParam("accountId") int recepientAccountId,@RequestParam("balance") double amount, HttpSession session) {
         ModelAndView mv = new ModelAndView();
+        int senderId = ((Account)session.getAttribute("account")).getAccountId();
+        Account sender = this.accountService.transferFunds(senderId, recepientAccountId, amount);
+        if(sender == null){
+            mv.addObject("message", "Transaction Failed");
+            session.setAttribute("account", sender);
+        } else {
+            mv.addObject("message", "Your have sent £" + amount+" to " + recepientAccountId + "" +
+                    " and your current balance is £"+ sender.getBalance());
+        }
 
+        mv.setViewName("Output");
+        return mv;
     }
 
     //=====================================
@@ -56,7 +73,7 @@ public class AccountController {
     //=======Menu Page=====================
     @RequestMapping("/menu")
     public ModelAndView menuPageController() {
-        return new ModelAndView("menuPage");
+        return new ModelAndView("MenuPage");
     };
 
 }

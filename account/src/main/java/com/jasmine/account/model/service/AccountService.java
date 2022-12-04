@@ -4,5 +4,5 @@ import com.jasmine.account.entity.Account;
 
 public interface AccountService {
 
-    public boolean findById(int accountId, int receipentId, double amount);
+    public Account transferFunds(int accountId, int receipentId, double amount);
 }
