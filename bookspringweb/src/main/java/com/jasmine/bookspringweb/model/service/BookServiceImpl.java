@@ -5,6 +5,7 @@ import com.jasmine.bookspringweb.model.persistence.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Collection;
 
 @Service
@@ -31,11 +32,15 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public boolean addBook(Book book) {
-        if(searchBookById(book.getBookId()) == null) {
-            bookDao.save(book);
+        try{
+            bookDao.insertBook(book.getBookId(), book.getBookName(), book.getAuthorName(),
+                    book.getNoOfCopies(), book.getDateOfPublishing());
             return true;
+        } catch (SQLIntegrityConstraintViolationException e) {
+            return false;
+        } catch(Exception ex) {
+            return false;
         }
-        return false;
     }
 
     @Override

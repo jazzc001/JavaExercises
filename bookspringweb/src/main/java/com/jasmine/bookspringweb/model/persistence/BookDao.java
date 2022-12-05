@@ -16,9 +16,12 @@ public interface BookDao extends JpaRepository<Book, Integer> {
     int countDistinctByAuthorName(String name);
 
     //JPQL
-//    @Query(value = "insert into books values(:bid, :na, :au, :co, :dop")
-//    int insertBook(@Param("bid")int bookId, @Param("na") String bookName, @Param("au") String authorName, @Param("co") int noOfCopies,
-//                   @Param("dop") LocalDate dateOfPublishing)throws SQLIntegrityConstraintViolationException;
+    @Query(value = "insert into books values(:bid, :na, :au, :co, :dop", nativeQuery = true)
+    int insertBook(@Param("bid")int bookId,
+                   @Param("na") String bookName,
+                   @Param("au") String authorName,
+                   @Param("co") int noOfCopies,
+                   @Param("dop") LocalDate dateOfPublishing)throws SQLIntegrityConstraintViolationException;
 
 
 
